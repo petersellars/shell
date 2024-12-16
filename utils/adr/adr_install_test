@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# file: adr_install_test
+
+# Source the library the adr_install script
+# shellcheck source=./adr_install
+. ./adr_install
+
+# Global variables that can be used in tests
+TEST_LOG_DIR="/tmp/log"
+# TEST_LOG_FILE="adr_install"
+# ADR_DIR="$HOME/.local/bin/adr"
+
+# setUp is run before each test
+setUp() {
+    # Create a clean test environment
+    rm -rf "$TEST_LOG_DIR"
+    mkdir -p "$TEST_LOG_DIR"
+    # Override the script's variables to point to our test environment
+    # LOG_FILE_DIR="$TEST_LOG_DIR"
+    # LOG_FILE="$TEST_LOG_FILE"
+    # We can also mock some functions if needed
+}
+
+test_create_log_directory_when_does_not_exist() {
+    # Ensure the directory does not exist
+    rm -rf "$TEST_LOG_DIR"
+    create_log_directory "$TEST_LOG_DIR"
+
+    # Local expected condition
+    condition="[ -d $TEST_LOG_DIR ]"
+
+    # Check that directory was created
+    assertTrue "Directory should have been created" "$condition"
+}
+
+# Test case for the log function
+# test_log() {
+
+#     # Call the aliased main function
+#     create_log_directory
+#     assertEquals 1 1
+
+    # local expected result
+    # expected="[$(date "+%Y-%m-%d %H:%M:%S")] [INFO] This is an INFO message"
+    # result=$(log INFO "This is an INFO message")
+
+    # # Assert that the result matches the expected output
+    # assertEquals "Log output did not match expected" "$expected" "$result"
+# }
+
+# tearDown is run after each test
+tearDown() {
+    # Cleanup after tests
+    rm -rf "$TEST_LOG_DIR"
+}
+
+# Load shUnit2
+# shellcheck source=shunit2
+. ../../shunit2
