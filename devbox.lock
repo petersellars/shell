@@ -316,6 +316,54 @@
           "store_path": "/nix/store/0l63mqr7qx1asjxfz86j4zbs4758gn98-git-2.46.0"
         }
       }
+    },
+    "shunit2@2.1.8": {
+      "last_modified": "2024-11-28T07:51:56Z",
+      "resolved": "github:NixOS/nixpkgs/226216574ada4c3ecefcbbec41f39ce4655f78ef#shunit2",
+      "source": "devbox-search",
+      "version": "2.1.8",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kns2g4jnwf1vxnmc76hw91jyd7kl2d50-shunit2-2.1.8",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kns2g4jnwf1vxnmc76hw91jyd7kl2d50-shunit2-2.1.8"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4ldqdf03hl07z9sdc0xaarl18wz230f4-shunit2-2.1.8",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/4ldqdf03hl07z9sdc0xaarl18wz230f4-shunit2-2.1.8"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2mk4rfkgak1vbc4mazzg7j1d8prsqbjx-shunit2-2.1.8",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2mk4rfkgak1vbc4mazzg7j1d8prsqbjx-shunit2-2.1.8"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wmwyzfczb3xzsz14addhdwgsmzc43p61-shunit2-2.1.8",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wmwyzfczb3xzsz14addhdwgsmzc43p61-shunit2-2.1.8"
+        }
+      }
     }
   }
 }
