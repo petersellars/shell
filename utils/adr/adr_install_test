@@ -56,4 +56,5 @@ tearDown() {
 
 # Load shUnit2
 # shellcheck source=shunit2
-. ../../shunit2
+. ../../shunit2 # Uses the 0f27c1a commit version of shunit2, which works with the tests at this time!
+# . shunit2  # Uses the Devbox/NixOS version of shunit2, which does not work with the tests at this time! Uses 2.1.8 version of shunit2
