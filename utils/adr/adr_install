@@ -18,11 +18,23 @@ LOG_FILE="adr_install"
 ADR_DIR="${HOME}/.local/bin/adr"
 ADR_REPO="https://github.com/npryce/adr-tools.git"
 
+# Function to set the log file directory
+set_log_file_dir() {
+    if [ -n "$1" ]; then
+        LOG_FILE_DIR="$1"
+    fi
+}
+
+# Function to get the log file directory
+get_log_file_dir() {
+   echo "$LOG_FILE_DIR"
+}
+
 # Function to create the log file directory if it doesn't exist
 create_log_directory() {
     local log_file_dir="$1"
     if [ ! -d "$log_file_dir" ]; then
-        log "INFO" "Creating directory $log_file_dir"
+        echo "INFO" "Creating directory $log_file_dir"
         if mkdir -p "$log_file_dir"; then
             log "INFO" "Directory $log_file_dir created successfully."
         else
@@ -98,7 +110,8 @@ make_script_executable() {
 
 # Main script execution
 main() {
-    create_log_directory "$LOG_FILE_DIR"
+    set_log_file_dir "${HOME}/.local/log"
+    create_log_directory "$(get_log_file_dir)"
     # Check required commands
     check_command "git"
     check_command "sudo"
