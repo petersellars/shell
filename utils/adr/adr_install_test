@@ -6,15 +6,17 @@
 . ./adr_install
 
 # Global variables that can be used in tests
-TEST_LOG_DIR="/tmp/log"
+TEST_LOG_FILE_DIR="/tmp/log"
 # TEST_LOG_FILE="adr_install"
 # ADR_DIR="$HOME/.local/bin/adr"
 
 # setUp is run before each test
 setUp() {
     # Create a clean test environment
-    rm -rf "$TEST_LOG_DIR"
-    mkdir -p "$TEST_LOG_DIR"
+    rm -rf "$TEST_LOG_FILE_DIR"
+    mkdir -p "$TEST_LOG_FILE_DIR"
+
+    set_log_file_dir "$TEST_LOG_FILE_DIR"
     # Override the script's variables to point to our test environment
     # LOG_FILE_DIR="$TEST_LOG_DIR"
     # LOG_FILE="$TEST_LOG_FILE"
@@ -23,11 +25,13 @@ setUp() {
 
 test_create_log_directory_when_does_not_exist() {
     # Ensure the directory does not exist
-    rm -rf "$TEST_LOG_DIR"
-    create_log_directory "$TEST_LOG_DIR"
+    if [ -d $TEST_LOG_FILE_DIR ]; then rm -Rf "$TEST_LOG_FILE_DIR"; fi
+
+    # Call the function
+    create_log_directory "$(get_log_file_dir)"
 
     # Local expected condition
-    condition="[ -d $TEST_LOG_DIR ]"
+    condition="[ -d $TEST_LOG_FILE_DIR ]"
 
     # Check that directory was created
     assertTrue "Directory should have been created" "$condition"
@@ -51,7 +55,7 @@ test_create_log_directory_when_does_not_exist() {
 # tearDown is run after each test
 tearDown() {
     # Cleanup after tests
-    rm -rf "$TEST_LOG_DIR"
+    rm -rf "$TEST_LOG_FILE_DIR"
 }
 
 # Load shUnit2
